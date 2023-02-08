@@ -1,12 +1,13 @@
 import './App.scss';
-import { Filter } from './components/Filter/Filter';
-import { Product } from './components/Product/Product';
+import React from 'react'
+import { Products } from './components/Products/Products';
+import { Navbar } from './components/Navbar/Navbar';
 
 function App() {
   return (
     <div className="App">
-      <Filter />
-      <Product />
+      <Navbar />
+      <Products />
     </div>
   );
 }

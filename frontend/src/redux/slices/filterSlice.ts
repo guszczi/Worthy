@@ -6,17 +6,17 @@ export interface FilterState {
 }
 
 const initialState: FilterState = {
-    filter: '',
+  filter: '',
 }
 
 export const filterSlice = createSlice({
-    name: 'productFilter',
-    initialState,
-    reducers: {
-        setFilter: (state, action: PayloadAction<string>) => {
-            state.filter = action.payload
-        }
-    },
+  name: 'productFilter',
+  initialState,
+  reducers: {
+    setFilter: (state, action: PayloadAction<string>) => {
+      state.filter = action.payload
+    }
+  },
 
 })
 
