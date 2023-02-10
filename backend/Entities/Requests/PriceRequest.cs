@@ -4,8 +4,8 @@ namespace backend.Entities.Requests
 {
     public class PriceRequest
     {
-        public DateTime PriceDate { get; set; }
-        public int PriceValue { get; set; }
+        public double PriceValue { get; set; }
         public int ProductId { get; set; }
+        public int ShopId { get; set; }
     }
 }

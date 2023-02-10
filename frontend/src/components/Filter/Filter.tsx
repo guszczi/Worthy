@@ -11,7 +11,7 @@ export const Filter = () => {
 
   const dispatch = useDispatch();
     
-  return (
+  return (    
     <div className="filter-input">
       <input
         type="text"

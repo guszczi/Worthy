@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using backend.Entities.Data;
 using backend.Entities.Models;
+using backend.Entities.Repositories.IRepositories;
 using backend.Entities.Requests;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,40 +13,61 @@ namespace backend.Entities.Repositories
     public class PriceRepository : IPriceRepository
     {
         protected readonly AppDbContext Context;
+
+        public PriceRepository(AppDbContext context)
+        {
+            Context = context;
+        }
         
-        public Task<bool> Add(PriceRequest priceRequest)
+        public async Task<Price> Add(PriceRequest priceRequest)
+        {
+            var price = new Price()
+            {
+                PriceDate = DateTime.Today.ToLocalTime(),
+                PriceValue = priceRequest.PriceValue,
+                ProductId = priceRequest.ProductId,
+                ShopId = priceRequest.ShopId
+            };
+
+            await Context.Prices.AddAsync(price);
+            await Context.SaveChangesAsync();
+
+            return price;
+        }
+
+        public async Task<Price> Update(Price price)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> Update(Price price)
+        public async Task<bool> Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> Delete(int id)
+        public async Task<Price> GetById(int id)
         {
-            throw new NotImplementedException();
+            return await Context.Prices.FirstOrDefaultAsync(x => x.PriceId == id);
         }
 
-        public Task<Price> GetById(int id)
+        public async Task<List<Price>> GetByProductId(int productId)
         {
-            return Context.Prices.FirstOrDefaultAsync(x => x.PriceId == id);
+            return await GetAll().Where(x => x.ProductId == productId).ToListAsync();
+        }
+        
+        public async Task<List<Price>> GetByShopId(int shopId)
+        {
+            return await GetAll().Where(x => x.ShopId == shopId).ToListAsync();
         }
 
-        public IQueryable<Price> GetByProductId(int productId)
+        public async Task<List<Price>> GetByDate(DateTime date)
         {
-            return Context.Prices.AsQueryable().Where(x => x.ProductId == productId);
-        }
-
-        public IQueryable<Price> GetByDate(DateTime date)
-        {
-            return Context.Prices.AsQueryable().Where(x => x.PriceDate == date);
+            return await GetAll().Where(x => x.PriceDate == date).ToListAsync();
         }
 
         public IQueryable<Price> GetAll()
         {
-            return Context.Prices;
+            return Context.Prices.AsQueryable();
         }
     }
 }

@@ -7,8 +7,7 @@ namespace backend.Entities.Models
         [Key]
         public int ProductId { get; set; }
         public string ProductName { get; set; }
-        public double ProductRating { get; set; }
-        public int ProductNumberOfOrders { get; set; }
+        public string ProductDescription { get; set; }
         public string ProductImageUrl { get; set; }
     }
 }

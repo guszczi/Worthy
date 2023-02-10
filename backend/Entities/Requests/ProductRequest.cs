@@ -3,8 +3,7 @@
     public class ProductRequest
     {
         public string ProductName { get; set; }
-        public double ProductRating { get; set; }
-        public int ProductNumberOfOrders { get; set; }
+        public string ProductDescription { get; set; }
         public string ProductImageUrl { get; set; }
     }
 }

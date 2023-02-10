@@ -1,8 +1,13 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using backend.Entities.Data;
 using backend.Entities.Models;
 using backend.Entities.Repositories;
+using backend.Entities.Repositories.IRepositories;
 using backend.Entities.Requests;
+using backend.Entities.Services.IServices;
+using Microsoft.EntityFrameworkCore;
 
 namespace backend.Entities.Services
 {
@@ -22,14 +27,18 @@ namespace backend.Entities.Services
             return await ProductRepository.GetById(id);
         }
 
+        public Task<List<Product>> GetAllProducts()
+        {
+            return ProductRepository.GetAll().ToListAsync();
+        }
+
         public async Task<Product> AddProduct(ProductRequest productRequest)
         {
             var product = new Product()
             {
                 ProductName = productRequest.ProductName,
-                ProductRating = productRequest.ProductRating,
+                ProductDescription = productRequest.ProductDescription,
                 ProductImageUrl = productRequest.ProductImageUrl,
-                ProductNumberOfOrders = productRequest.ProductNumberOfOrders
             };
 
             await Context.Products.AddAsync(product);

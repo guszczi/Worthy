@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using backend.Entities.Data;
+using backend.Entities.Models;
 using backend.Entities.Repositories;
+using backend.Entities.Repositories.IRepositories;
 using backend.Entities.Services;
+using backend.Entities.Services.IServices;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,7 +33,7 @@ namespace backend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddCors();
             services.AddControllers();
             services.AddDbContext<AppDbContext>(x 
                 => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
@@ -39,13 +42,21 @@ namespace backend
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "backend", Version = "v1" });
             });
             
-            
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             // DI
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IPriceService, PriceService>();
-            
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IRatingService, RatingService>();
+            services.AddScoped<IShopService, ShopService>();
+            services.AddScoped<ILinkService, LinkService>();
+
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IPriceRepository, PriceRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IRatingRepository, RatingRepository>();
+            services.AddScoped<IShopRepository, ShopRepository>();
+            services.AddScoped<ILinkRepository, LinkRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,6 +72,14 @@ namespace backend
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            
+            app.UseCors(
+                options => options
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .SetIsOriginAllowed(origin => true)
+                    .AllowCredentials()
+            );
 
             app.UseAuthorization();
 

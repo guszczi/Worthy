@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using backend.Entities.Models;
 using backend.Entities.Data;
 using backend.Entities.Repositories;
+using backend.Entities.Repositories.IRepositories;
 using backend.Entities.Requests;
+using backend.Entities.Services.IServices;
 using Microsoft.EntityFrameworkCore;
 
 namespace backend.Entities.Services
@@ -23,27 +25,32 @@ namespace backend.Entities.Services
         
         public async Task<Price> AddPrice(PriceRequest priceRequest)
         {
-            var price = new Price()
-            {
-                PriceDate = priceRequest.PriceDate,
-                PriceValue = priceRequest.PriceValue,
-                ProductId = priceRequest.ProductId
-            };
+            return await PriceRepository.Add(priceRequest);
+        }
 
-            await Context.Prices.AddAsync(price);
-            await Context.SaveChangesAsync();
+        public async Task<Price> UpdatePrice(Price price)
+        {
+            return await PriceRepository.Update(price);
+        }
 
-            return price;
+        public async Task<bool> DeletePrice(int priceId)
+        {
+            return await PriceRepository.Delete(priceId);
+        }
+
+        public async Task<List<Price>> GetAllPrices()
+        {
+            return await PriceRepository.GetAll().ToListAsync();
         }
 
         public async Task<List<Price>> GetPricesByProductId(int productId)
         {
-            return await Context.Prices.Where(x => x.ProductId == productId).ToListAsync();
+            return await PriceRepository.GetByProductId(productId);
         }
 
         public async Task<List<Price>> GetPricesByDate(DateTime date)
         {
-            return await Context.Prices.Where(x => x.PriceDate == date).ToListAsync();
+            return await PriceRepository.GetByDate(date);
         }
     }
 }
