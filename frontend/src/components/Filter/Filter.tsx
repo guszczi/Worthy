@@ -12,13 +12,15 @@ export const Filter = () => {
   const dispatch = useDispatch();
     
   return (    
-    <div className="filter-input">
-      <input
+    <div className="input-group input-group-lg">
+      <input 
         type="text"
         onChange={e => dispatch(setFilter(e.target.value))}
         value={filter}
-        placeholder="Wyszukaj..."
-      ></input>
+        placeholder="Wyszukaj..." 
+        className="form-control filter-input" 
+        aria-label="Small" 
+        aria-describedby="inputGroup-sizing-sm" />
     </div>
   )
 }

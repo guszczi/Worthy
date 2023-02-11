@@ -1,8 +1,12 @@
-.card {
+.product-card {
     margin: 16px;
+    height: 100% !important;
+    cursor: pointer;
 }
 
-.card-img-top {
-    aspect-ratio: 1/1;
+.product-content {
+    display: flex !important;
+    justify-content: space-around !important;
+    flex-direction: column !important;
 }
 

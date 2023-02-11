@@ -1,28 +1,25 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import './ProductCard.scss';
+import { Product } from "../../interfaces/interfaces";
 
-interface Product {
-  name: string;
-  description: string;
-  cost: number;
-  imageUrl: string;
-}
 
 export const ProductCard = (props: Product) => {
-  const {name, description, cost, imageUrl} = props;
+  const {productId, productName, productDescription, productImageUrl} = props;
+  const navigate = useNavigate();
 
-  const showAlert = () => {
-    alert(name)
-  }
+  const goToProduct = () => {
+    navigate("/products/"+productId)
+  };
 
   return (
-    <div className="col-sm-3">
-      <div className="card">
-        <img src={imageUrl} className="card-img-top" onClick={showAlert} alt="This is a product's image"/>
-        <div className="card-body">
-          <h5 className="card-title">{name}</h5>
-          <p className="card-text">{description}</p>
-          <p className="card-text">Już od {cost} zł</p>
+    <div className="col-md-3">
+      <div className="card product-card" onClick={goToProduct}>
+        <img src={productImageUrl} className="card-img-top" alt="This is a product's image"/>
+        <div className="card-body product-content">
+          <h5 className="card-title">{productName}</h5>
+          <p className="card-text">{productDescription}</p>
+          <p className="card-text">Już od {12} zł</p>
         </div>
       </div>
     </div>

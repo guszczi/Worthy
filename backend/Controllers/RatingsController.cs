@@ -29,6 +29,16 @@ namespace backend.Controllers
 
             return Ok(list);
         }
+        
+        [HttpGet("byProductId")]
+        public async Task<IActionResult> GetRatingsByProductId(int productId)
+        {
+            if (!ModelState.IsValid) return new BadRequestObjectResult("Invalid payload");
+
+            var list = await _ratingService.GetRatingsByProductId(productId);
+
+            return Ok(list);
+        }
 
         [HttpPost]
         [Route("Add")]

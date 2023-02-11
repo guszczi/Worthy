@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 export interface FilterState {
-    filter: string
+  filter: string
 }
 
 const initialState: FilterState = {
