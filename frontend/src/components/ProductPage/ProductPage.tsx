@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery } from '@tanstack/react-query';
 import ProductsService from "../../services/products";
 import PricesService from "../../services/prices";
 import OrdersService from "../../services/orders";
 import RatingsService from "../../services/ratings";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { Order, Price, Product, Rating } from "../../interfaces/interfaces";
 import './ProductPage.scss';
 import { ShopCard } from "../ShopCard/ShopCard";
@@ -17,6 +17,7 @@ import { RatingsCard } from "../RatingsCard/RatingsCard";
 
 export const ProductPage = () => {
   const params = useParams();
+  const navigate = useNavigate();
 
   const [show, setShow] = useState(false);
 
@@ -27,6 +28,12 @@ export const ProductPage = () => {
     queryKey: ['product', params.id],
     queryFn: () => ProductsService.getProductById(params.id),
   })
+
+  if (productQuery.status === "success") {
+    if (productQuery.data === '') {
+      navigate("/error")
+    }
+  }
 
   const pricesQuery = useQuery({
     queryKey: ['price', params.id],
@@ -53,7 +60,6 @@ export const ProductPage = () => {
   const orders: Array<Order> = ordersQuery.data;
   const ratings: Array<Rating> = ratingsQuery.data;
   const dailyPrices: any = dailyPricesQuery.data;
-
   const lowestPrice: Price = prices?.reduce((prev, curr) => prev.priceValue < curr.priceValue ? prev : curr);
 
   function getOrders() {
@@ -80,10 +86,13 @@ export const ProductPage = () => {
   }
 
   function getPrices() {
-    const now = new Date().toISOString().substring(0, 10);
-    return prices?.filter(price => {
-      return price?.priceDate.substring(0, 10) === now;
-    })
+    const pricesByShop = prices?.reduce((acc: any, curr: any) => {
+      if (!acc[curr?.shopId] || new Date(curr?.priceDate) > new Date(acc[curr?.shopId]?.priceDate)) {
+        acc[curr?.shopId] = curr;
+      }
+      return acc;
+    }, []);
+    return pricesByShop
   }
 
   function generateStars(numberOfStars: number) {
@@ -92,20 +101,19 @@ export const ProductPage = () => {
       if (numberOfStars > i) {
         stars.push(<i key={i} className="bi bi-star-fill"></i>)
       }
-      else if (numberOfStars / i < 1 && (numberOfStars % 1 >= 0.5)) {
+      else if (numberOfStars - i > -1 && (numberOfStars % 1 >= 0.5)) {
         stars.push(<i key={i} className="bi bi-star-half"></i>)
       }
       else {
         stars.push(<i key={i} className="bi bi-star"></i>)
       }
     }
-
     return stars;
   }
 
   const [numRatings, avgRating] = getRatings();
   const numOrders = getOrders();
-  const actualPrices = getPrices()?.sort((x, y) => x.priceValue - y.priceValue);
+  const actualPrices = getPrices()?.sort((x: any, y: any) => x.priceValue - y.priceValue);
   
   return (
     <div className="container">

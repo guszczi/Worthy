@@ -58,7 +58,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Products />} />
         <Route path='/products/:id' element={<ProductPage />} />
-        <Route path='/*' element={<h1>rip</h1>} />
+        <Route path='/*' element={<h1 className="my-4">Nie znaleziono zasobu.</h1>} />
       </Routes>
     </div>
   );
