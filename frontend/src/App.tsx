@@ -12,6 +12,7 @@ import ShopsService from "./services/shops"
 import LinksService from "./services/links"
 import OrdersService from "./services/orders"
 import RatingsService from "./services/ratings"
+import WebScrapperService from "./services/webscrapper"
 import { setOrders } from './redux/slices/ordersSlice';
 import { setRatings } from './redux/slices/ratingsSlice';
 
@@ -43,6 +44,13 @@ function App() {
     dispatch(setRatings(ratingsQuery?.data))
     dispatch(setShops(shopsQuery?.data))
   })
+
+  const today = new Date().toISOString().substring(0, 10)
+
+  if (localStorage.getItem('updateDate') != today) {
+    WebScrapperService.refreshData();
+    localStorage.setItem('updateDate', today)
+  }
 
   return (
     <div className="App">

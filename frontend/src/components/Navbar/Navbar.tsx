@@ -1,6 +1,5 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import { Filter } from "../Filter/Filter"
 
 export const Navbar = () => {
   return (

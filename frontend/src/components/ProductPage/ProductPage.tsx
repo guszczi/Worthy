@@ -1,16 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from '@tanstack/react-query';
 import ProductsService from "../../services/products";
 import PricesService from "../../services/prices";
 import OrdersService from "../../services/orders";
 import RatingsService from "../../services/ratings";
 import { useParams } from "react-router";
-import { Price, Product } from "../../interfaces/interfaces";
+import { Order, Price, Product, Rating } from "../../interfaces/interfaces";
 import './ProductPage.scss';
 import { ShopCard } from "../ShopCard/ShopCard";
+import { Modal } from "react-bootstrap";
+import { Chart } from "../Chart/Chart";
+import OverlayTrigger from "react-bootstrap/esm/OverlayTrigger";
+import Tooltip from "react-bootstrap/esm/Tooltip";
+import { OrdersCard } from "../OrdersCard/OrdersCard";
+import { RatingsCard } from "../RatingsCard/RatingsCard";
 
 export const ProductPage = () => {
   const params = useParams();
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  
   const productQuery = useQuery({
     queryKey: ['product', params.id],
     queryFn: () => ProductsService.getProductById(params.id),
@@ -31,14 +43,23 @@ export const ProductPage = () => {
     queryFn: () => RatingsService.getRatingsByProductId(params.id),
   })
 
+  const dailyPricesQuery = useQuery({
+    queryKey: ['dailyPrice', params.id],
+    queryFn: () => PricesService.getDailyPricesByProductId(params.id)
+  })
+
   const product: Product = productQuery.data;
   const prices: Array<Price> = pricesQuery.data;
-  const orders: Array<any> = ordersQuery.data;
-  const ratings: Array<any> = ratingsQuery.data;
+  const orders: Array<Order> = ordersQuery.data;
+  const ratings: Array<Rating> = ratingsQuery.data;
+  const dailyPrices: any = dailyPricesQuery.data;
+
+  const lowestPrice: Price = prices?.reduce((prev, curr) => prev.priceValue < curr.priceValue ? prev : curr);
 
   function getOrders() {
     let numberOfOrders = 0;
-    orders?.forEach(order => {
+    
+    orders?.filter(order => order?.orderNumber >= 0)?.forEach(order => {
       numberOfOrders += order?.orderNumber;
     })
 
@@ -51,10 +72,10 @@ export const ProductPage = () => {
     
     ratings?.forEach(rating => {
       numberOfRatings += rating?.ratingNumber;
-      averageRating += rating?.ratingGrade;
+      averageRating += rating?.ratingGrade * rating?.ratingNumber;
     })
     
-    averageRating /= ratings?.filter(rating => rating?.ratingNumber > 0).length;
+    averageRating /= numberOfRatings;
     return [numberOfRatings, averageRating];
   }
 
@@ -86,7 +107,6 @@ export const ProductPage = () => {
   const numOrders = getOrders();
   const actualPrices = getPrices()?.sort((x, y) => x.priceValue - y.priceValue);
   
-
   return (
     <div className="container">
       <div className="container-fluid">
@@ -99,22 +119,49 @@ export const ProductPage = () => {
             <div className="rating">
               {generateStars(avgRating)}
               <span className="px-2">{numRatings} opinii</span>
-              <i className="bi bi-info-circle"></i>
+              <OverlayTrigger 
+                placement="right" 
+                overlay={<Tooltip><RatingsCard ratings={ratings}/></Tooltip>} 
+                delay={{show: 150, hide: 150}}
+                
+              >
+                <i className="bi bi-info-circle"></i>
+              </OverlayTrigger>
             </div>
             <div className="orders">
               <span className="py-2">Kupiło {numOrders} osób</span>
-              <i className="bi bi-info-circle px-2"></i>
+              <OverlayTrigger 
+                placement="right" 
+                overlay={<Tooltip><OrdersCard orders={orders}/></Tooltip>} 
+                delay={{show: 150, hide: 150}}
+                
+              >
+                <i className="bi bi-info-circle px-2"></i>
+              </OverlayTrigger>
             </div>
             <p className="product-description mt-4">{product?.productDescription}</p>
-            <h4 className="price">Najniższa cena: 389 zł</h4>
-            <button><i className="bi bi-graph-up-arrow px-2"></i>Sprawdź historię ceny</button>
+            <h4 className="price">Najniższa cena: {lowestPrice?.priceValue.toFixed(2)} zł - {lowestPrice?.priceDate.substring(0, 10)}</h4>
+            <button 
+              type="button" 
+              className="btn btn-primary my-4"
+              onClick={handleShow}>
+              <i className="bi bi-graph-up-arrow px-2"></i>
+              Sprawdź historię ceny
+            </button>
           </div>
         </div>
-        <hr />
       </div>
+      <hr />
       <>{actualPrices?.map((price: Price) => (
         <ShopCard key={price.priceId} {...price}/>
       ))}</>
+      <Modal show={show} onHide={handleClose} size={'lg'}>
+        <Modal.Header closeButton>
+          <Modal.Title>Historia cen</Modal.Title>
+        </Modal.Header>
+        <Modal.Body><div className="modal-chart"><Chart prices={dailyPrices}/></div></Modal.Body>
+      </Modal>
+      
     </div>
   )
 }

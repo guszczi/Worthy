@@ -20,11 +20,11 @@ export const ShopCard = (props: Price) => {
   const link = links?.find(link => link?.shopId == shopId && link?.productId == productId)
   
   return (
-    <div className="card">
-      <div className="card-body shop-card-body">
-        <p>{shop?.shopName}</p>
-        <p>{priceValue} zł</p>
-        <a href={link?.linkUrl}><input type="button" value="Przejdź do sklepu"/></a>
+    <div className="card my-4">
+      <div className="card-body shop-card-body row">
+        <div className='col-4 d-flex align-items-center shop-name'>{shop?.shopName}</div>
+        <div className='col d-flex align-items-center justify-content-end'>{priceValue.toFixed(2)} zł</div>
+        <div className='col text-end'><a href={link?.linkUrl}><button type='button' className='btn btn-primary'>Idź do sklepu</button></a></div>
       </div>
     </div>
   )

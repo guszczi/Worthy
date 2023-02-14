@@ -7,8 +7,6 @@ import ProductsService from "../../services/products"
 import { Product } from "../../interfaces/interfaces";
 import { Filter } from '../Filter/Filter';
 
-
-
 export const Products = () => {
   const productsQuery = useQuery({
     queryKey: ['products'],
@@ -29,7 +27,7 @@ export const Products = () => {
           filterBy ? product.productName.toLowerCase().includes(filterBy) : true    
         )
           .map(product => (
-            <ProductCard key={product.productId} {...product}/>
+            <ProductCard key={product.productId} {...product} />
           ))}
       </div>
     </div>

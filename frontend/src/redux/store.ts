@@ -3,7 +3,7 @@ import filterSliceReducer from "./slices/filterSlice";
 import shopsSliceReducer  from "./slices/shopsSlice";
 import linksSliceReducer  from "./slices/linksSlice";
 import ordersSliceReducer from "./slices/ordersSlice";
-import ratingsSliceReducer from "./slices/ratingsSlice"
+import ratingsSliceReducer from "./slices/ratingsSlice";
 
 export const store = configureStore({
   reducer: {

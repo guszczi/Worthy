@@ -13,6 +13,21 @@ export interface Price {
   shopId: number,
 }
 
+export interface Order {
+  orderId: number,
+  orderNumber: number,
+  productId: number,
+  shopId: number,
+}
+
+export interface Rating {
+  ratingId: number,
+  ratingNumber: number,
+  ratingGrade: number,
+  productId: number,
+  shopId: number,
+}
+
 export interface Shop {
   shopId: number,
   shopName: string,
