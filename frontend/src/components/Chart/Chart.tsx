@@ -9,7 +9,7 @@ export const Chart = ({prices}: any) => {
   prices?.map((price: Price) => {
     data.push({
       name: price.priceDate.substring(0, 10),
-      price: price.priceValue,
+      cena: price.priceValue,
     })
   })
   
@@ -21,7 +21,7 @@ export const Chart = ({prices}: any) => {
         <CartesianGrid strokeDasharray="3 3" />
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="price" stroke="#8884d8" activeDot={{ r: 8 }} />
+        <Line type="monotone" dataKey="cena" stroke="#8884d8" activeDot={{ r: 8 }} />
       </LineChart>
     </ResponsiveContainer>
   );

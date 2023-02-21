@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="backend.Controllers.LinksController">
+    <Position X="1" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIgAAAABAAABAAAAAABAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\LinksController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="backend.Controllers.OrdersController">
+    <Position X="2.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAABAIAAAAAAAAAAACAAAAAAAAg=</HashCode>
+      <FileName>Controllers\OrdersController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="backend.Controllers.PricesController">
+    <Position X="4.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAEAAIAAAAAAAAAAAAAAAAACAAAAAAQACACAAA=</HashCode>
+      <FileName>Controllers\PricesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="backend.Controllers.ProductsController">
+    <Position X="9.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAIAAAQAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Controllers\ProductsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="backend.Controllers.RatingsController">
+    <Position X="6.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAABAAAEEAAABCAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Controllers\RatingsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="backend.Controllers.ShopsController">
+    <Position X="8" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAARAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\ShopsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="backend.Controllers.WebScraperController">
+    <Position X="11.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEIAAAAAAAAABAAAAAAAAAAAAAAACAAAACAAAAAAAAA=</HashCode>
+      <FileName>Controllers\WebScraperController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="backend.Entities.Data.AppDbContext">
+    <Position X="1" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAQAAAAAAEgAAAAAAAAAAAAAACAAAAAAAAAQ=</HashCode>
+      <FileName>Entities\Data\AppDbContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="backend.Entities.Models.Link">
+    <Position X="2.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UAACAAAAAAAAAAAAAAAAAAAAAACgCAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Models\Link.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="backend.Entities.Models.Order">
+    <Position X="4.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UAACAAIAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Models\Order.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="backend.Entities.Models.Price">
+    <Position X="6.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UAAiAAAAAAAAABAAAAAAAAABAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Models\Price.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="backend.Entities.Models.Product">
+    <Position X="8" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAIAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Entities\Models\Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="backend.Entities.Models.Rating">
+    <Position X="11.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UAACAAAAAAAIAAAAAAAAAABAAACAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Entities\Models\Rating.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="backend.Entities.Models.Shop">
+    <Position X="9.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Models\Shop.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="backend.Entities.Repositories.LinkRepository" BaseTypeListCollapsed="true">
+    <Position X="1" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAgAAAAAAAAAAAAAAAAEAAAAACgAAAAAAAIA=</HashCode>
+      <FileName>Entities\Repositories\LinkRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="backend.Entities.Repositories.OrderRepository" BaseTypeListCollapsed="true">
+    <Position X="2.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAgAAAAAAAAAAAAAAAAEAAAAACgAAAAAAAIA=</HashCode>
+      <FileName>Entities\Repositories\OrderRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="backend.Entities.Repositories.PriceRepository" BaseTypeListCollapsed="true">
+    <Position X="4.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAEAgAFAAAAAAAAAAAAAAEgAAAACgAAAAAAAIA=</HashCode>
+      <FileName>Entities\Repositories\PriceRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="backend.Entities.Repositories.ProductRepository" BaseTypeListCollapsed="true">
+    <Position X="6.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAgAAAAAAAAAAAAAAAAEAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>Entities\Repositories\ProductRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="backend.Entities.Repositories.RatingRepository" BaseTypeListCollapsed="true">
+    <Position X="8" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAgAAAAAAAAAAAAAAAAEAAAAACgAAAAAAAIA=</HashCode>
+      <FileName>Entities\Repositories\RatingRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="backend.Entities.Repositories.ShopRepository" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAgAAAAAAAAAAAAAAAAEAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>Entities\Repositories\ShopRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="backend.Entities.Services.LinkService" BaseTypeListCollapsed="true">
+    <Position X="11.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAABgAABABAAAAAAAAQAAAACAAAAAAAAAACAAA=</HashCode>
+      <FileName>Entities\Services\LinkService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="backend.Entities.Services.OrderService" BaseTypeListCollapsed="true">
+    <Position X="13.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAgAgAAAAAAEAAAAIAAAAAEAAAAAEAAAAAAAAg=</HashCode>
+      <FileName>Entities\Services\OrderService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="backend.Entities.Services.PriceService" BaseTypeListCollapsed="true">
+    <Position X="15" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAEAgABEAAAAAAAAAAAAAQAAAAAAAARACACAAA=</HashCode>
+      <FileName>Entities\Services\PriceService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="backend.Entities.Services.ProductService" BaseTypeListCollapsed="true">
+    <Position X="16.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAIAAAQAAAAAAAAAAAAAEAAAAAAQA=</HashCode>
+      <FileName>Entities\Services\ProductService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.21" Collapsed="true" />
+  </Class>
+  <Class Name="backend.Entities.Services.RatingService" BaseTypeListCollapsed="true">
+    <Position X="13.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgBAAAkEAAAACAAAAAAAAAAAACAAAAAAAAI=</HashCode>
+      <FileName>Entities\Services\RatingService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="backend.Entities.Services.ShopService" BaseTypeListCollapsed="true">
+    <Position X="15" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAIAAAACgAAAAAABAAQAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Entities\Services\ShopService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="backend.Entities.Repositories.IRepositories.ILinkRepository" Collapsed="true">
+    <Position X="1" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAAAAAAAAAAAAAAAAAAEAAAAACgAAAAAAAIA=</HashCode>
+      <FileName>Entities\Repositories\IRepositories\ILinkRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="backend.Entities.Repositories.IRepositories.IOrderRepository" Collapsed="true">
+    <Position X="2.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAAAAAAAAAAAAAAAAAAEAAAAACgAAAAAAAIA=</HashCode>
+      <FileName>Entities\Repositories\IRepositories\IOrderRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="backend.Entities.Repositories.IRepositories.IPriceRepository" Collapsed="true">
+    <Position X="4.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAEAAAFAAAAAAAAAAAAAAEgAAAACgAAAAAAAIA=</HashCode>
+      <FileName>Entities\Repositories\IRepositories\IPriceRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="backend.Entities.Repositories.IRepositories.IProductRepository" Collapsed="true">
+    <Position X="6.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>Entities\Repositories\IRepositories\IProductRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="backend.Entities.Repositories.IRepositories.IRatingRepository" Collapsed="true">
+    <Position X="8" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAAAAAAAAAAAAAAAAAAEAAAAACgAAAAAAAIA=</HashCode>
+      <FileName>Entities\Repositories\IRepositories\IRatingRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="backend.Entities.Repositories.IRepositories.IShopRepository" Collapsed="true">
+    <Position X="9.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>Entities\Repositories\IRepositories\IShopRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="backend.Entities.Services.IServices.ILinkService" Collapsed="true">
+    <Position X="11.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAABAAABABAAAAAAAAQAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Entities\Services\IServices\ILinkService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="backend.Entities.Services.IServices.IOrderService" Collapsed="true">
+    <Position X="13.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAgAAAAAAAAAAAAAIAAAAAEAAAAAEAAAAAAAAg=</HashCode>
+      <FileName>Entities\Services\IServices\IOrderService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="backend.Entities.Services.IServices.IPriceService" Collapsed="true">
+    <Position X="15" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAEAAABAAAAAAAAAAAAAAQAAAAAAAARACACAAA=</HashCode>
+      <FileName>Entities\Services\IServices\IPriceService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="backend.Entities.Services.IServices.IProductService" Collapsed="true">
+    <Position X="16.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAQAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Entities\Services\IServices\IProductService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="backend.Entities.Services.IServices.IRatingService" Collapsed="true">
+    <Position X="13.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAEEAAAACAAAAAAAAAAAACAAAAAAAAI=</HashCode>
+      <FileName>Entities\Services\IServices\IRatingService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="backend.Entities.Services.IServices.IShopService" Collapsed="true">
+    <Position X="15" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAIAAAACAAAAAAAAAAQAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Entities\Services\IServices\IShopService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

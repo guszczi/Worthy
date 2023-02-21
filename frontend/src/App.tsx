@@ -38,6 +38,11 @@ function App() {
     queryFn: RatingsService.getRatings,
   })
 
+  const dataQuery = useQuery({
+    queryKey: ['updateData'],
+    queryFn: WebScrapperService.getLastUpdateDate,
+  })
+
   useEffect(() => {
     dispatch(setOrders(ordersQuery?.data))
     dispatch(setLinks(linksQuery?.data))
@@ -45,11 +50,11 @@ function App() {
     dispatch(setShops(shopsQuery?.data))
   })
 
-  const today = new Date().toISOString().substring(0, 10)
+  const today = new Date().toLocaleString().substring(0, 10)
+  const data = dataQuery?.data?.substring(0, 10)
 
-  if (localStorage.getItem('updateDate') != today) {
+  if (data !== undefined && data !== today) {
     WebScrapperService.refreshData();
-    localStorage.setItem('updateDate', today)
   }
 
   return (

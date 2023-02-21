@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text.RegularExpressions;
@@ -37,6 +38,10 @@ namespace backend.Controllers
         {
             if (!ModelState.IsValid) return new BadRequestObjectResult("Invalid payload");
 
+            await using (StreamWriter writer = new StreamWriter(@"./date.txt")) {
+                writer.WriteLine(DateTime.Today.ToLocalTime());
+            }
+            
             var links = await _linkService.GetAllLinks();
 
             foreach (var link in links)
@@ -78,7 +83,18 @@ namespace backend.Controllers
                 
                 Thread.Sleep(5000);
             }
+            
             return Ok("Success.");
+        }
+
+        [HttpGet("date")]
+        public async Task<IActionResult> GetUpdateData()
+        {
+            if (!ModelState.IsValid) return new BadRequestObjectResult("Invalid payload");
+            
+            string text = await System.IO.File.ReadAllTextAsync(@"./date.txt");
+
+            return Ok(text);
         }
     }
 }
